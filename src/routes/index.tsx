@@ -1,24 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { Games } from "@/components/site/Games";
+import { Features } from "@/components/site/Features";
+import { Pricing } from "@/components/site/Pricing";
+import { Footer } from "@/components/site/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "NovexaHost — Hospedagem de servidores de jogos" },
+      {
+        name: "description",
+        content:
+          "Servidores de Minecraft Java, Bedrock e CS2 com console em tempo real, backups automáticos, proteção DDoS e uptime de 99,9%.",
+      },
+      { property: "og:title", content: "NovexaHost — Hospedagem de servidores de jogos" },
+      {
+        property: "og:description",
+        content:
+          "Provisione servidores de Minecraft e CS2 em segundos, com painel completo e proteção DDoS incluída.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <Hero />
+        <Games />
+        <Features />
+        <Pricing />
+      </main>
+      <Footer />
     </div>
   );
 }
