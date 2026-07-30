@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Menu, X, Server } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Menu, X, Server, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { label: "Jogos", href: "#jogos" },
@@ -11,6 +13,8 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, loading } = useAuth();
+
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
