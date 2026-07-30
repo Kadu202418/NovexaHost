@@ -1,5 +1,7 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+
 import heroImage from "@/assets/hero-datacenter.jpg";
 
 const stats = [
@@ -38,14 +40,17 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button variant="brand" size="xl">
-              Criar servidor
-              <ArrowRight className="size-4" />
+            <Button variant="brand" size="xl" asChild>
+              <Link to="/auth">
+                Criar servidor
+                <ArrowRight className="size-4" />
+              </Link>
             </Button>
-            <Button variant="outline" size="xl">
-              Conhecer planos
+            <Button variant="outline" size="xl" asChild>
+              <a href="#precos">Conhecer planos</a>
             </Button>
           </div>
+
         </div>
 
         <dl className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">

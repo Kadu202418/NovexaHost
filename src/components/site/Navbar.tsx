@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Menu, X, Server } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Menu, X, Server, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { label: "Jogos", href: "#jogos" },
@@ -11,6 +13,8 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, loading } = useAuth();
+
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
@@ -37,13 +41,25 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button variant="ghost" size="sm">
-            Login
-          </Button>
-          <Button variant="brand" size="sm">
-            Registrar
-          </Button>
+          {!loading && user ? (
+            <Button variant="brand" size="sm" asChild>
+              <Link to="/dashboard">
+                <LayoutDashboard className="size-4" />
+                Meu painel
+              </Link>
+            </Button>
+          ) : (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/auth">Login</Link>
+              </Button>
+              <Button variant="brand" size="sm" asChild>
+                <Link to="/auth">Registrar</Link>
+              </Button>
+            </>
+          )}
         </div>
+
 
         <button
           aria-label="Abrir menu"
@@ -68,13 +84,28 @@ export function Navbar() {
               </a>
             ))}
             <div className="mt-2 flex gap-2">
-              <Button variant="outline" className="flex-1">
-                Login
-              </Button>
-              <Button variant="brand" className="flex-1">
-                Registrar
-              </Button>
+              {!loading && user ? (
+                <Button variant="brand" className="flex-1" asChild>
+                  <Link to="/dashboard" onClick={() => setOpen(false)}>
+                    Meu painel
+                  </Link>
+                </Button>
+              ) : (
+                <>
+                  <Button variant="outline" className="flex-1" asChild>
+                    <Link to="/auth" onClick={() => setOpen(false)}>
+                      Login
+                    </Link>
+                  </Button>
+                  <Button variant="brand" className="flex-1" asChild>
+                    <Link to="/auth" onClick={() => setOpen(false)}>
+                      Registrar
+                    </Link>
+                  </Button>
+                </>
+              )}
             </div>
+
           </div>
         </div>
       )}
