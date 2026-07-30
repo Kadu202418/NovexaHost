@@ -21,8 +21,8 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <nav className="section-shell flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-primary glow-ring">
-            <Server className="size-4.5 text-primary-foreground" strokeWidth={2.4} />
+          <span className="flex size-9 items-center justify-center overflow-hidden rounded-xl bg-primary glow-ring">
+            <img src={logoAsset.url} alt="NovexaHost" className="size-full object-contain" />
           </span>
           <span className="text-lg font-bold tracking-tight">
             Novexa<span className="text-accent">Host</span>
