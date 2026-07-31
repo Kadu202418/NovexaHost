@@ -6,149 +6,147 @@
 <title>NovexaHost — Hospedagem de servidores de jogos</title>
 <meta name="description" content="Servidores de Minecraft Java, Bedrock e CS2 com console em tempo real, backups automáticos, proteção DDoS e uptime de 99,9%." />
 <meta name="author" content="NovexaHost" />
-<meta property="og:title" content="NovexaHost — Hospedagem de servidores de jogos" />
-<meta property="og:description" content="Provisione servidores de Minecraft e CS2 em segundos, com painel completo e proteção DDoS incluída." />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 <style>
-:root{
-  --background:#0D1117; --foreground:#FFFFFF; --surface:#161B22; --card:#1E2631;
-  --primary:#A11224; --primary-hover:#C81E35; --accent:#E11D48; --accent-hover:#FF3B3B;
-  --muted-foreground:#B8C0CC; --border:#2D3748; --radius:.875rem;
-  --gradient-primary:linear-gradient(135deg,var(--primary),var(--accent));
-  --gradient-surface:linear-gradient(160deg,rgba(30,38,49,.92),rgba(22,27,34,.92));
-  --glow:0 0 0 1px rgba(225,29,72,.28),0 18px 50px -18px rgba(225,29,72,.55);
-  --shadow-card:0 20px 50px -30px rgba(0,0,0,.9);
+:root {
+  --background: #0D1117; 
+  --foreground: #FFFFFF; 
+  --surface: #161B22; 
+  --card: #1E2631;
+  --primary: #A11224; 
+  --primary-hover: #C81E35; 
+  --accent: #E11D48; 
+  --accent-hover: #FF3B3B;
+  --muted-foreground: #B8C0CC; 
+  --border: #2D3748; 
+  --radius: .875rem;
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+  --gradient-surface: linear-gradient(160deg, rgba(30,38,49,.92), rgba(22,27,34,.92));
+  --glow: 0 0 0 1px rgba(225,29,72,.28), 0 18px 50px -18px rgba(225,29,72,.55);
+  --shadow-card: 0 20px 50px -30px rgba(0,0,0,.9);
 }
-*{box-sizing:border-box;margin:0;padding:0;border-color:var(--border)}
-html{scroll-behavior:smooth}
-body{background:var(--background);color:var(--foreground);font-family:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
-::selection{background:rgba(225,29,72,.35)}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-.shell{margin-inline:auto;width:100%;max-width:80rem;padding-inline:1.5rem}
-.muted{color:var(--muted-foreground)}
-.accent{color:var(--accent)}
-.grad-text{background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;color:transparent}
-.glass{background:var(--gradient-surface);backdrop-filter:blur(14px);border:1px solid var(--border);box-shadow:var(--shadow-card)}
-.glow{box-shadow:var(--glow)}
-.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:calc(var(--radius) - 2px);font-size:.875rem;font-weight:600;padding:.6rem 1.1rem;cursor:pointer;border:1px solid transparent;transition:all .2s cubic-bezier(.4,0,.2,1);white-space:nowrap}
-.btn-brand{background:var(--primary);color:#fff}
-.btn-brand:hover{background:var(--primary-hover);box-shadow:var(--glow)}
-.btn-soft{background:rgba(161,18,36,.15);color:var(--accent);border-color:rgba(225,29,72,.3)}
-.btn-soft:hover{background:rgba(161,18,36,.28)}
-.btn-outline{border-color:var(--border);background:transparent;color:var(--foreground)}
-.btn-outline:hover{background:var(--card)}
-.btn-ghost{background:transparent;color:var(--muted-foreground)}
-.btn-ghost:hover{color:#fff;background:var(--card)}
-.btn-xl{padding:.9rem 1.6rem;font-size:1rem}
-.btn[disabled]{opacity:.5;cursor:not-allowed}
-.btn-full{width:100%}
+* { box-sizing: border-box; margin: 0; padding: 0; border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+::selection { background: rgba(225,29,72,.35); }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
 
-/* navbar */
-header.nav{position:fixed;inset-inline:0;top:0;z-index:50;border-bottom:1px solid rgba(45,55,72,.6);background:rgba(13,17,23,.7);backdrop-filter:blur(16px)}
-.nav-inner{display:flex;height:64px;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:.625rem;font-size:1.125rem;font-weight:700;letter-spacing:-.02em}
-.brand-mark{display:flex;width:44px;height:44px;align-items:center;justify-content:center;overflow:hidden;border-radius:.75rem;background:#000;box-shadow:var(--glow)}
-.brand-mark img{width:100%;height:100%;object-fit:contain}
-.nav-links{display:none;gap:2rem;align-items:center}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--muted-foreground);transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-actions{display:none;gap:.5rem;align-items:center}
-#menu-btn{display:inline-flex;background:none;border:0;color:var(--muted-foreground);padding:.5rem;border-radius:.5rem;cursor:pointer}
-.mobile{display:none;border-top:1px solid var(--border);background:var(--surface)}
-.mobile.open{display:block}
-.mobile .shell{display:flex;flex-direction:column;gap:.25rem;padding-block:1rem}
-.mobile a.m-link{border-radius:.5rem;padding:.5rem .75rem;font-size:.875rem;font-weight:500;color:var(--muted-foreground)}
-.mobile a.m-link:hover{background:var(--card);color:#fff}
-.mobile .m-actions{display:flex;gap:.5rem;margin-top:.5rem}
-.mobile .m-actions .btn{flex:1}
-@media(min-width:768px){.nav-links,.nav-actions{display:flex}#menu-btn{display:none}.mobile{display:none!important}}
+.shell { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: 1.5rem; }
+.muted { color: var(--muted-foreground); }
+.accent { color: var(--accent); }
+.grad-text { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.glass { background: var(--gradient-surface); backdrop-filter: blur(14px); border: 1px solid var(--border); box-shadow: var(--shadow-card); }
+.glow { box-shadow: var(--glow); }
+.icon { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-/* hero */
-.hero{position:relative;overflow:hidden;padding-top:64px}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4}
-.hero-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,17,23,.7),rgba(13,17,23,.85),var(--background))}
-.hero-body{position:relative;padding-block:6rem}
-.hero-copy{margin-inline:auto;max-width:48rem;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);background:rgba(22,27,34,.8);border-radius:999px;padding:.375rem .875rem;font-size:.75rem;font-weight:500;color:var(--muted-foreground);backdrop-filter:blur(6px)}
-.badge .icon{width:14px;height:14px;color:var(--accent)}
-h1{margin-top:1.5rem;font-size:2.25rem;font-weight:800;line-height:1.05;letter-spacing:-.03em}
-.hero-copy p{margin:1.25rem auto 0;max-width:36rem;color:var(--muted-foreground);font-size:1rem}
-.hero-cta{margin-top:2.25rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
-.stats{margin:5rem auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;overflow:hidden;border-radius:1rem;border:1px solid var(--border);background:var(--border);max-width:56rem}
-.stats>div{background:rgba(22,27,34,.9);padding:1.75rem 1.5rem;text-align:center;backdrop-filter:blur(6px)}
-.stats dt{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
-.stats dd{margin-top:.25rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-foreground)}
-@media(min-width:640px){.hero-cta{flex-direction:row}}
-@media(min-width:768px){h1{font-size:3.75rem}.hero-copy p{font-size:1.125rem}.hero-body{padding-block:8rem}.stats{grid-template-columns:repeat(4,1fr)}.stats dt{font-size:1.875rem}}
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: calc(var(--radius) - 2px); font-size: .875rem; font-weight: 600; padding: .6rem 1.1rem; cursor: pointer; border: 1px solid transparent; transition: all .2s cubic-bezier(.4,0,.2,1); white-space: nowrap; }
+.btn-brand { background: var(--primary); color: #fff; }
+.btn-brand:hover { background: var(--primary-hover); box-shadow: var(--glow); }
+.btn-soft { background: rgba(161,18,36,.15); color: var(--accent); border-color: rgba(225,29,72,.3); }
+.btn-soft:hover { background: rgba(161,18,36,.28); }
+.btn-outline { border-color: var(--border); background: transparent; color: var(--foreground); }
+.btn-outline:hover { background: var(--card); }
+.btn-ghost { background: transparent; color: var(--muted-foreground); }
+.btn-ghost:hover { color: #fff; background: var(--card); }
+.btn-xl { padding: .9rem 1.6rem; font-size: 1rem; }
+.btn-full { width: 100%; }
 
-/* sections */
-section{padding-block:6rem}
-h2{font-size:1.875rem;font-weight:700;letter-spacing:-.02em}
-.sec-head{max-width:42rem}
-.sec-head p{margin-top:.75rem;color:var(--muted-foreground)}
-.center{text-align:center;margin-inline:auto}
-@media(min-width:768px){h2{font-size:2.25rem}}
+/* Navbar */
+header.nav { position: fixed; inset-inline: 0; top: 0; z-index: 50; border-bottom: 1px solid rgba(45,55,72,.6); background: rgba(13,17,23,.7); backdrop-filter: blur(16px); }
+.nav-inner { display: flex; height: 64px; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: .625rem; font-size: 1.125rem; font-weight: 700; letter-spacing: -.02em; }
+.brand-mark { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; overflow: hidden; border-radius: .75rem; background: #000; box-shadow: var(--glow); }
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+.nav-links { display: none; gap: 2rem; align-items: center; }
+.nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted-foreground); transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-actions { display: none; gap: .5rem; align-items: center; }
+#menu-btn { display: inline-flex; background: none; border: 0; color: var(--muted-foreground); padding: .5rem; cursor: pointer; }
+@media(min-width: 768px) { .nav-links, .nav-actions { display: flex; } #menu-btn { display: none; } }
 
-.grid{display:grid;gap:1.25rem;margin-top:3rem}
-@media(min-width:640px){.g-4,.g-3{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.g-4{grid-template-columns:repeat(4,1fr)}.g-3{grid-template-columns:repeat(3,1fr)}}
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-top: 64px; }
+.hero-body { position: relative; padding-block: 6rem; }
+.hero-copy { margin-inline: auto; max-width: 48rem; text-align: center; }
+.badge { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--border); background: rgba(22,27,34,.8); border-radius: 999px; padding: .375rem .875rem; font-size: .75rem; font-weight: 500; color: var(--muted-foreground); }
+h1 { margin-top: 1.5rem; font-size: 2.25rem; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+.hero-copy p { margin: 1.25rem auto 0; max-width: 36rem; color: var(--muted-foreground); font-size: 1rem; }
+.hero-cta { margin-top: 2.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; }
 
-.card{display:flex;flex-direction:column;border-radius:1rem;padding:1.5rem;transition:all .2s}
-.card .pill{display:flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:.75rem;background:rgba(161,18,36,.15);color:var(--accent)}
-.card h3{margin-top:1.25rem;font-size:1rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
-.card p{margin-top:.5rem;flex:1;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)}
-.card .btn{margin-top:1.5rem}
-.card.live:hover{transform:translateY(-4px);border-color:rgba(225,29,72,.5);box-shadow:var(--glow)}
-.card.soon{opacity:.6}
-.tag{border:1px solid var(--border);border-radius:999px;padding:.1rem .5rem;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-foreground)}
+/* Estatísticas */
+.stats { margin: 4rem auto 0; display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; overflow: hidden; border-radius: 1rem; border: 1px solid var(--border); background: var(--border); max-width: 56rem; }
+.stats>div { background: rgba(22,27,34,.9); padding: 1.75rem 1.5rem; text-align: center; backdrop-filter: blur(6px); }
+.stats dt { font-size: 1.75rem; font-weight: 700; letter-spacing: -.02em; }
+.stats dd { margin-top: .25rem; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--muted-foreground); }
 
-#recursos{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(22,27,34,.5)}
-.feat{border-radius:1rem;padding:1.5rem;transition:border-color .2s}
-.feat:hover{border-color:rgba(225,29,72,.4)}
-.feat .icon{color:var(--accent)}
-.feat h3{margin-top:1rem;font-size:1rem;font-weight:600}
-.feat p{margin-top:.5rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground)}
+@media(min-width: 640px) { .hero-cta { flex-direction: row; } }
+@media(min-width: 768px) { h1 { font-size: 3.75rem; } .stats { grid-template-columns: repeat(4, 1fr); } }
 
-/* pricing */
-.plans{display:grid;gap:1.5rem;margin-top:3rem}
-@media(min-width:1024px){.plans{grid-template-columns:repeat(3,1fr)}}
-.plan{position:relative;display:flex;flex-direction:column;border-radius:1rem;padding:1.75rem;border:1px solid var(--border);transition:transform .2s}
-.plan:hover{transform:translateY(-4px)}
-.plan.hot{border-color:rgba(225,29,72,.5);background:var(--card);box-shadow:var(--glow)}
-.plan .flag{position:absolute;top:-12px;left:1.75rem;border-radius:999px;background:var(--primary);padding:.25rem .75rem;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fff}
-.plan h3{font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-foreground)}
-.price{margin-top:.75rem;display:flex;align-items:baseline;gap:.25rem}
-.price b{font-size:2.25rem;font-weight:800;letter-spacing:-.02em}
-.price span{font-size:.875rem;color:var(--muted-foreground)}
-.plan .tagline{margin-top:.5rem;font-size:.875rem;color:var(--muted-foreground)}
-.plan ul{margin-top:1.5rem;flex:1;list-style:none;display:flex;flex-direction:column;gap:.75rem}
-.plan li{display:flex;align-items:center;gap:.625rem;font-size:.875rem}
-.plan li .icon{width:16px;height:16px;color:var(--accent);flex-shrink:0}
-.plan .btn{margin-top:2rem}
+/* Seções Gerais */
+section { padding-block: 5rem; }
+h2 { font-size: 1.875rem; font-weight: 700; letter-spacing: -.02em; }
+.sec-head { max-width: 42rem; }
+.sec-head p { margin-top: .75rem; color: var(--muted-foreground); }
+.center { text-align: center; margin-inline: auto; }
 
-/* footer */
-footer{border-top:1px solid var(--border);background:rgba(22,27,34,.6)}
-.foot{display:flex;flex-direction:column;gap:2.5rem;padding-block:3.5rem}
-.foot p{margin-top:1rem;font-size:.875rem;line-height:1.6;color:var(--muted-foreground);max-width:28rem}
-.foot-actions{display:flex;flex-direction:column;gap:.75rem}
-.copy{border-top:1px solid var(--border)}
-.copy p{padding-block:1.25rem;font-size:.75rem;color:var(--muted-foreground)}
-@media(min-width:640px){.foot-actions{flex-direction:row}}
-@media(min-width:768px){.foot{flex-direction:row;align-items:center;justify-content:space-between}}
+.grid { display: grid; gap: 1.25rem; margin-top: 3rem; }
+@media(min-width: 640px) { .g-3 { grid-template-columns: repeat(2,1fr); } }
+@media(min-width: 1024px) { .g-3 { grid-template-columns: repeat(3,1fr); } }
+
+.card { display: flex; flex-direction: column; border-radius: 1rem; padding: 1.5rem; transition: all .2s; }
+.card .pill { display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: .75rem; background: rgba(161,18,36,.15); color: var(--accent); }
+.card h3 { margin-top: 1.25rem; font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+.card p { margin-top: .5rem; flex: 1; font-size: .875rem; line-height: 1.6; color: var(--muted-foreground); }
+.card .btn { margin-top: 1.5rem; }
+
+/* Modal / Sistema de Login */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(13,17,23,.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1.5rem; }
+.modal-overlay.open { display: flex; }
+.modal { width: 100%; max-width: 26rem; border-radius: 1.25rem; padding: 2rem; position: relative; }
+.modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: 0; color: var(--muted-foreground); cursor: pointer; }
+.modal-close:hover { color: #fff; }
+.modal h3 { font-size: 1.5rem; font-weight: 700; text-align: center; }
+.modal-sub { font-size: .875rem; color: var(--muted-foreground); text-align: center; margin-top: .25rem; }
+
+/* Formulário do Modal */
+.auth-tabs { display: flex; margin-top: 1.5rem; border-bottom: 1px solid var(--border); }
+.auth-tab { flex: 1; padding: .75rem; text-align: center; font-size: .875rem; font-weight: 600; color: var(--muted-foreground); background: none; border: 0; cursor: pointer; border-bottom: 2px solid transparent; }
+.auth-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.form-group { margin-top: 1.25rem; }
+.form-group label { display: block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--muted-foreground); margin-bottom: .375rem; }
+.form-group input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: .5rem; padding: .625rem .875rem; color: #fff; font-size: .875rem; outline: none; }
+.form-group input:focus { border-color: var(--accent); }
+.modal-actions { margin-top: 1.75rem; }
+
+/* Planos */
+.plans { display: grid; gap: 1.5rem; margin-top: 3rem; }
+@media(min-width: 1024px) { .plans { grid-template-columns: repeat(3,1fr); } }
+.plan { position: relative; display: flex; flex-direction: column; border-radius: 1rem; padding: 1.75rem; border: 1px solid var(--border); }
+.plan.hot { border-color: rgba(225,29,72,.5); background: var(--card); box-shadow: var(--glow); }
+.plan .flag { position: absolute; top: -12px; left: 1.75rem; border-radius: 999px; background: var(--primary); padding: .25rem .75rem; font-size: 10px; font-weight: 700; text-transform: uppercase; color: #fff; }
+.price { margin-top: .75rem; display: flex; align-items: baseline; gap: .25rem; }
+.price b { font-size: 2.25rem; font-weight: 800; }
+.plan ul { margin-top: 1.5rem; flex: 1; list-style: none; display: flex; flex-direction: column; gap: .75rem; font-size: .875rem; }
+.plan li { display: flex; align-items: center; gap: .5rem; }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); background: rgba(22,27,34,.6); margin-top: 4rem; }
+.foot { display: flex; flex-direction: column; gap: 2rem; padding-block: 3.5rem; }
+.copy { border-top: 1px solid var(--border); text-align: center; }
+.copy p { padding-block: 1.25rem; font-size: .75rem; color: var(--muted-foreground); }
+@media(min-width: 768px) { .foot { flex-direction: row; align-items: center; justify-content: space-between; } }
 </style>
 </head>
 <body id="top">
 
+<!-- Header / Nav -->
 <header class="nav">
   <nav class="shell nav-inner">
     <a href="#top" class="brand">
@@ -164,59 +162,45 @@ footer{border-top:1px solid var(--border);background:rgba(22,27,34,.6)}
       <a href="#suporte">Suporte</a>
     </div>
     <div class="nav-actions">
-      <a href="#" class="btn btn-brand">Área do Cliente</a>
+      <button onclick="toggleModal(true)" class="btn btn-brand" id="userBtn">Área do Cliente</button>
     </div>
-    <button id="menu-btn" aria-label="Abrir Menu">
-      <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    </button>
   </nav>
-  <div class="mobile" id="mobile-menu">
-    <div class="shell">
-      <a href="#jogos" class="m-link">Jogos</a>
-      <a href="#recursos" class="m-link">Recursos</a>
-      <a href="#planos" class="m-link">Planos</a>
-      <a href="#suporte" class="m-link">Suporte</a>
-      <div class="m-actions">
-        <a href="#" class="btn btn-brand btn-full">Área do Cliente</a>
-      </div>
-    </div>
-  </div>
 </header>
 
+<!-- Principal -->
 <main class="hero">
-  <div class="hero-veil"></div>
   <div class="shell hero-body">
     <div class="hero-copy">
       <div class="badge">
         <svg class="icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-        <span>Performance Imparável & Infrastructure de Elite</span>
+        <span>Performance Extrema em Cloud</span>
       </div>
-      <h1>Hospedagem de Servidores de Jogos sem <span class="grad-text">Complicar</span></h1>
-      <p>Servidores de Minecraft Java, Bedrock e CS2 com console em tempo real, backups automáticos, proteção DDoS e uptime de 99,9%.</p>
+      <h1>Sua Comunidade Online com <span class="grad-text">Máximo Desempenho</span></h1>
+      <p>Hospedagem de servidores de jogos com proteção DDoS em tempo real, painel completo de controle e alta capacidade de processamento.</p>
       
       <div class="hero-cta">
-        <a href="#planos" class="btn btn-brand btn-xl">Ver Planos e Preços</a>
-        <a href="#recursos" class="btn btn-outline btn-xl">Conhecer Recursos</a>
+        <a href="#planos" class="btn btn-brand btn-xl">Ver Planos</a>
+        <button onclick="toggleModal(true)" class="btn btn-outline btn-xl">Acessar Painel</button>
       </div>
     </div>
 
-    <!-- Estatísticas (Linha 87) -->
+    <!-- Estatísticas de Uso -->
     <dl class="stats">
       <div>
-        <dt class="accent">99.9%</dt>
-        <dd>Uptime Garantido</dd>
+        <dt class="accent">1.240+</dt>
+        <dd>Servidores Ativos</dd>
       </div>
       <div>
-        <dt class="accent">&lt; 15ms</dt>
-        <dd>Latência Média BR</dd>
+        <dt class="accent">45.000+</dt>
+        <dd>Jogadores Conectados</dd>
       </div>
       <div>
-        <dt class="accent">100%</dt>
-        <dd>Proteção DDoS Anti-Volumetric</dd>
+        <dt class="accent">99.99%</dt>
+        <dd>Uptime Global</dd>
       </div>
       <div>
-        <dt class="accent">24/7</dt>
-        <dd>Suporte Especializado</dd>
+        <dt class="accent">&lt; 12ms</dt>
+        <dd>Ping Médio Brasil</dd>
       </div>
     </dl>
   </div>
@@ -226,137 +210,133 @@ footer{border-top:1px solid var(--border);background:rgba(22,27,34,.6)}
 <section id="jogos">
   <div class="shell">
     <div class="sec-head center">
-      <h2>Escolha seu <span class="grad-text">Jogo</span></h2>
-      <p>Infraestrutura otimizada para os games mais populares do mercado.</p>
+      <h2>Servidores <span class="grad-text">Suportados</span></h2>
+      <p>Prontos para jogar em poucos segundos após a confirmação.</p>
     </div>
 
     <div class="grid g-3">
-      <div class="card glass live">
+      <div class="card glass">
         <div class="pill">
           <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
         </div>
-        <h3>Minecraft Java <span class="tag">Ativo</span></h3>
-        <p>Suporte completo a Paper, Spigot, Forge, Fabric e Modpacks pesados. Instalação com 1-clique.</p>
-        <a href="#planos" class="btn btn-soft">Configurar Servidor</a>
+        <h3>Minecraft (Java/Bedrock)</h3>
+        <p>Instalação automatizada de Plugins, Mods, Paper, Spigot e Forge com 1-Clique.</p>
+        <a href="#planos" class="btn btn-soft">Ver Servidores</a>
       </div>
 
-      <div class="card glass live">
+      <div class="card glass">
         <div class="pill">
           <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
         </div>
-        <h3>Counter-Strike 2 <span class="tag">Ativo</span></h3>
-        <p>Tickrate 128, sub-tick otimizado, suporte a plugins metamod e painel rápido de gerenciamento.</p>
-        <a href="#planos" class="btn btn-soft">Configurar Servidor</a>
+        <h3>Counter-Strike 2</h3>
+        <p>Servidores 128-tick otimizados com suporte a Metamod e plugins para partidas competitivas.</p>
+        <a href="#planos" class="btn btn-soft">Ver Servidores</a>
       </div>
 
-      <div class="card glass soon">
+      <div class="card glass">
         <div class="pill">
-          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
         </div>
-        <h3>Rust & ARK <span class="tag">Em Breve</span></h3>
-        <p>Estamos finalizando a otimização de templates para servidores de alta capacidade para Rust e ARK.</p>
-        <button class="btn btn-ghost" disabled>Indisponível</button>
+        <h3>Outros Jogos (Node VPS)</h3>
+        <p>Ambiente totalmente configurável para FiveM, Rust, Terraria, Palworld e outros títulos.</p>
+        <a href="#planos" class="btn btn-soft">Ver Servidores</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Seção de Recursos -->
-<section id="recursos">
-  <div class="shell">
-    <div class="sec-head center">
-      <h2>Recursos de <span class="grad-text">Última Geração</span></h2>
-      <p>Tudo o que seu servidor precisa para manter a comunidade online sem interrupções.</p>
-    </div>
-
-    <div class="grid g-3">
-      <div class="feat glass">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        <h3>Proteção DDoS Nativa</h3>
-        <p>Sistemas automatizados que mitigarão ataques volumetricos em milissegundos sem derrubar os jogadores.</p>
-      </div>
-
-      <div class="feat glass">
-        <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-        <h3>Armazenamento NVMe SSD</h3>
-        <p>Leitura e escrita ultrarrápidas para carregamento instantâneo de chunks e mapas.</p>
-      </div>
-
-      <div class="feat glass">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-        <h3>Backups Automáticos</h3>
-        <p>Rotinas diárias de backup salvas em nuvem externa para você restaurar seu progresso quando quiser.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Seção de Planos -->
+<!-- Planos de Preços -->
 <section id="planos">
   <div class="shell">
     <div class="sec-head center">
       <h2>Planos & <span class="grad-text">Preços</span></h2>
-      <p>Transparente, sem taxas escondidas. Cancele ou altere o plano a qualquer momento.</p>
+      <p>Sem fidelidade, cancele ou altere as configurações a qualquer momento.</p>
     </div>
 
     <div class="plans">
-      <!-- Plan 1 -->
       <div class="plan glass">
-        <h3>Iniciante</h3>
-        <div class="price">
-          <b>R$ 19,90</b>
-          <span>/mês</span>
-        </div>
-        <p class="tagline">Ideal para pequenos servidores de amigos.</p>
+        <h3>Plano Inicial</h3>
+        <div class="price"><b>R$ 19,90</b><span class="muted">/mês</span></div>
         <ul>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 4 GB RAM DDR4</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 vCPU Otimizado</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 40 GB NVMe Storage</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Proteção DDoS Padrão</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 4 GB RAM DDR4</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 vCPU Otimizado</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 40 GB NVMe Storage</li>
         </ul>
-        <a href="#" class="btn btn-outline btn-full">Contratar Agora</a>
+        <button onclick="toggleModal(true)" class="btn btn-outline btn-full" style="margin-top:2rem">Contratar Agora</button>
       </div>
 
-      <!-- Plan 2 (Hot) -->
       <div class="plan hot">
-        <span class="flag">Mais Popular</span>
-        <h3>Pro Gamer</h3>
-        <div class="price">
-          <b>R$ 39,90</b>
-          <span>/mês</span>
-        </div>
-        <p class="tagline">Perfeito para comunidades e servidores públicos.</p>
+        <span class="flag">Mais Escolhido</span>
+        <h3>Plano Pro Gamer</h3>
+        <div class="price"><b>R$ 39,90</b><span class="muted">/mês</span></div>
         <ul>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 8 GB RAM DDR4</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 4 vCPU Otimizado</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 80 GB NVMe Storage</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Proteção DDoS Avançada</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Backups Diários Grátis</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 8 GB RAM DDR4</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 4 vCPU Otimizado</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 80 GB NVMe Storage</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Proteção Anti-DDoS Avançada</li>
         </ul>
-        <a href="#" class="btn btn-brand btn-full">Contratar Agora</a>
+        <button onclick="toggleModal(true)" class="btn btn-brand btn-full" style="margin-top:2rem">Contratar Agora</button>
       </div>
 
-      <!-- Plan 3 -->
       <div class="plan glass">
-        <h3>Enterprise</h3>
-        <div class="price">
-          <b>R$ 79,90</b>
-          <span>/mês</span>
-        </div>
-        <p class="tagline">Para redes grandes e modpacks pesados.</p>
+        <h3>Plano Enterprise</h3>
+        <div class="price"><b>R$ 79,90</b><span class="muted">/mês</span></div>
         <ul>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 16 GB RAM DDR4</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 6 vCPU Dedicado</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 160 GB NVMe Storage</li>
-          <li><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Suporte Prioritário VIP</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 16 GB RAM DDR4</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 6 vCPU Dedicado</li>
+          <li><svg class="icon accent" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 160 GB NVMe Storage</li>
         </ul>
-        <a href="#" class="btn btn-outline btn-full">Contratar Agora</a>
+        <button onclick="toggleModal(true)" class="btn btn-outline btn-full" style="margin-top:2rem">Contratar Agora</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Modal de Área do Cliente (Firebase Auth Integrado) -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal glass">
+    <button class="modal-close" onclick="toggleModal(false)">✕</button>
+    <h3>Área do Cliente</h3>
+    <p class="modal-sub">Gerencie seus servidores e faturas</p>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Entrar</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Criar Conta</button>
+    </div>
+
+    <!-- Form de Login -->
+    <form id="formLogin">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="loginEmail" placeholder="seu@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required />
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-brand btn-full">Acessar Painel</button>
+      </div>
+    </form>
+
+    <!-- Form de Cadastro -->
+    <form id="formRegister" style="display:none;">
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="regEmail" placeholder="seu@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="regPassword" placeholder="••••••••" required />
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-brand btn-full">Criar Minha Conta</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Rodapé -->
 <footer id="suporte">
   <div class="shell foot">
     <div>
@@ -366,24 +346,118 @@ footer{border-top:1px solid var(--border);background:rgba(22,27,34,.6)}
         </span>
         NovexaHost
       </a>
-      <p>Oferecendo a melhor infraestrutura para seus jogos favoritos com máximo desempenho e baixa latência.</p>
+      <p class="muted">Hospedagem de alto desempenho para servidores com uptime garantido e suporte dedicado.</p>
     </div>
-    <div class="foot-actions">
+    <div>
       <a href="#" class="btn btn-outline">Central de Ajuda</a>
-      <a href="#" class="btn btn-brand">Comunidade Discord</a>
+      <a href="#" class="btn btn-brand">Discord Oficial</a>
     </div>
   </div>
-  <div class="copy center">
+  <div class="copy">
     <p>&copy; 2026 NovexaHost. Todos os direitos reservados.</p>
   </div>
 </footer>
 
+<!-- Firebase SDKs e Lógica de Autenticação -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+  import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword, 
+    onAuthStateChanged,
+    signOut 
+  } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+  // Sua configuração do Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyA9fuL0vPIb78qkNmSJxnNGlXiLFUMvFQg",
+    authDomain: "nexlor.firebaseapp.com",
+    projectId: "nexlor",
+    storageBucket: "nexlor.firebasestorage.app",
+    messagingSenderId: "310515477887",
+    appId: "1:310515477887:web:7a0cbcac44f6406867fe4a",
+    measurementId: "G-78CPY5K054"
+  };
+
+  // Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+
+  // Manipular Login com Firebase
+  document.getElementById('formLogin').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      alert(`Bem-vindo de volta, ${userCredential.user.email}!`);
+      toggleModal(false);
+    } catch (error) {
+      alert(`Erro no Login: ${error.message}`);
+    }
+  });
+
+  // Manipular Cadastro com Firebase
+  document.getElementById('formRegister').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('regEmail').value;
+    const password = document.getElementById('regPassword').value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      alert(`Conta criada com sucesso! Bem-vindo, ${userCredential.user.email}`);
+      toggleModal(false);
+    } catch (error) {
+      alert(`Erro ao Criar Conta: ${error.message}`);
+    }
+  });
+
+  // Listener do Estado do Usuário (Sessão)
+  onAuthStateChanged(auth, (user) => {
+    const btn = document.getElementById('userBtn');
+    if (user) {
+      btn.innerText = "Minha Conta";
+      btn.onclick = () => {
+        if (confirm(`Conectado como: ${user.email}\nDeseja sair da sua conta?`)) {
+          signOut(auth);
+        }
+      };
+    } else {
+      btn.innerText = "Área do Cliente";
+      btn.onclick = () => toggleModal(true);
+    }
+  });
+</script>
+
 <script>
-// Menu Mobile Toggle
-const btn = document.getElementById('menu-btn');
-const menu = document.getElementById('mobile-menu');
-if(btn && menu) {
-  btn.addEventListener('click', () => menu.classList.toggle('open'));
+// Controle Visual do Modal
+function toggleModal(show) {
+  const modal = document.getElementById('authModal');
+  if (show) modal.classList.add('open');
+  else modal.classList.remove('open');
+}
+
+function switchTab(tab) {
+  const fLogin = document.getElementById('formLogin');
+  const fReg = document.getElementById('formRegister');
+  const tLogin = document.getElementById('tabLogin');
+  const tReg = document.getElementById('tabRegister');
+
+  if (tab === 'login') {
+    fLogin.style.display = 'block';
+    fReg.style.display = 'none';
+    tLogin.classList.add('active');
+    tReg.classList.remove('active');
+  } else {
+    fLogin.style.display = 'none';
+    fReg.style.display = 'block';
+    tReg.classList.add('active');
+    tLogin.classList.remove('active');
+  }
 }
 </script>
 
